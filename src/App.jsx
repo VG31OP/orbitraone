@@ -15,12 +15,15 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  // Initialize Lenis smooth scroll
+  // Initialize Lenis smooth scroll with mobile touch optimizations
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window);
+
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: isMobile ? 0.8 : 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
+      smoothTouch: false, // Let mobile touch viewports use native momentum scrolling for 60-120 FPS
       infinite: false,
     });
 
@@ -60,7 +63,7 @@ export default function App() {
         <Contact />
       </main>
 
-      {/* Shell Footer */}
+      {/* Global Footer */}
       <Footer />
     </div>
   );

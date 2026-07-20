@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '480px',
+        '3xl': '1920px',
+        '4xl': '2560px',
+      },
       colors: {
         bg: "#030306",
         "bg-alt": "#0a0a12",
